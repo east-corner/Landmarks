@@ -19,14 +19,21 @@ struct LandmarkRow: View {
             Text(landmark.name)
             
             Spacer()
+            
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .imageScale(/*@START_MENU_TOKEN@*/.medium/*@END_MENU_TOKEN@*/)
+                    .foregroundStyle(.yellow)
+            }
+//            FavoriteButton(isSet: .constant(true))
         }
     }
 }
 
 #Preview {
-    Group {
+    let landmarks = ModelData().landmarks
+    return Group {
         LandmarkRow(landmark: landmarks[0])
         LandmarkRow(landmark: landmarks[1])
     }
 }
-
